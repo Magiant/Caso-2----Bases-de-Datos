@@ -16,7 +16,7 @@ Caso #2 - Etheria Global & Dynamic Brands Group
                     -> MySQL
 
 - Database name   : -> EGloBrands
-- Database context: -> 
+- Database context: -> Un holding comercial que opera bajo el modelo de negocio híbrido de importación y ventas digitales de alta gama necesita un sistema que le permita modelar los datos y controlar el flujo de información que se da al manejar los registros de cada proceso de negocio que se lleva a cabo. Existen dos empresas que trabajan en este negocio, una es Etheria Global y la otra es Dynamic Brands, que cumplen roles diferentes. Se debe llevar a cabo un software de bases de datos que permita compartir información desde la base de datos de una empresa a la de la otra empresa. Es necesario llevar un registro que la trazabilidad en cada orden que se haga, así como salvar el historial de todas las entidades involucradas en el proceso de entrega del pedido. El sistema debe ser capaz de tener en cuenta los tipos de cambios en las monedas de cada país a donde se vaya a enviar el pedido así como los impuestos que aplcan sobre cada producto que se transporta.
 
 
 
