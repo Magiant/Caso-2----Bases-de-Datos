@@ -15,32 +15,68 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - Database engine : -> PostgreSQL 18
                     -> MySQL
 
-- Database name   : -> 
+- Database name   : -> EGloBrands
 - Database context: -> 
+
 
 
 # Tables
 
+
 ## Patrón de addresses
 - patronaddressid serial auto-increase PK
-- 
+- ciudadid FK
+- paisid FK
+- adressorigenid FK
+- adressdestinoid FK
+
+
+## Adresses origenes
+- adressorigenid serial auto-increment PK
+- puertotypeid
+
+
+## Adresses destinos
+- adressdestinoid serial auto-increment PK
+- puertotypeid
+
+
+## Ciudades origen
+- ciudadorigenid serial auto-increment PK
+- ciudadid FK
+- paisid FK
+
+
+## Ciudades destino
+- ciudaddestinoid serial auto-increment PK
+- ciudadid FK
+- paisid FK
+
 
 ## Puertos por ciudades
 - puertosporciudadid seial auto-increase PK
 - puertosporciudadname varchar(40)
-- patronaddressid FK
 - ciudadid FK
+- puertotypeid FK
+
 
 ## Aeropuertos por ciudades
 - aeropuertosporciudadid serial auto-increase PK
 - aeropuertosporciudadname varchar(40)
-- puertosporciudadid FK
 - ciudadid FK
+- puertotypeid FK
+
+
+## Puertostypes
+- puertotypeid serial auto-increase PK 
+- puertotypetype smallint  ||-> Puerto o Aeropuerto
+
 
 ## Couriers
 - courierid serial auto-increase PK
 - couriername varchar(40)
 - ciudadid FK
+
 
 ## Currencies
 - currencyid serial auto-increase PK
@@ -83,6 +119,7 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - exchangecurrencyhistorydate timestamp
 - courierid FK
 
+
 ## Paises
 - paisid serial auto-increase PK
 - paisname vrachar(20)
@@ -101,9 +138,24 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - productcategory FK
 - proveedorid FK
 
+
 ## ProductsCategories
 - productcategory serial auto-increase PK
 - productcategoyname varchar(30)
+
+
+## Product Prices
+- productpriceid serial auto-increment PK
+- productpriceprice integer
+- productid FK
+
+
+## Product prices histories
+- productpricehistoryid serial auto-increment FK
+- productpriceid FK
+- productpricehistoryvigentfrom timestamp
+- productpricehistoryvigentto timestamp
+- estado boolean
 
 
 ## Brands
@@ -140,4 +192,59 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - precioporproductohistorialfin timestamp
 
 
-## Impuesto por país
+## Descuentos por productos
+- descuentoporproductoid serial auto-increment PK
+- descuentoporproductopercent smallint
+- productid FK
+
+
+## Descuentos por producto historiales
+- descuentoproductohistorialid serial auto-incease PK
+- descuentoporproductoid FK
+- descuentoproductohistorialfrom timestamp
+- descuentoproductohistorialto timestamp
+- estado boolean
+
+## Impuesto por países
+- impuestosporpaisid serial auto-increase PK
+- productid FK
+- paisid FK
+
+
+## Historial de impuestos
+- historialdeimpuestoid serial auto-increase PK
+- impuestosporpaisid FK
+- historialdeimpuestoinicio timestamp
+- historialdeimpuestofin timestamp
+- estado boolean
+
+
+## Ordenes
+- ordenid serial auto-increment PK
+- paidid FK
+- cityid FK
+- ordennumerodepedido int
+- descuentoporproductoid FK
+- impuestosporpaisid FK
+- adressorigenid FK
+- documentodeimportacionid FK
+
+
+## OrderTrackings
+- ordertrackingid serial auto-increment PK
+- ciudadorigenid FK
+- ciudaddestinoid FK
+- courierid FK
+- ordertrackingfechapedido timestamp
+- ordertrackingfechaentrega timestamp
+- estado boolean
+
+
+## Listas de productos
+- listadeproductoid serial auto-increment PK
+- ordenid FK
+- productid FK
+- precioporproductoid FK
+- listadeproductocantidad int
+
+
