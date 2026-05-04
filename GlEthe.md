@@ -346,7 +346,6 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 
 ## Logs 
 - logid serial auto-increment pk
-- productid FK
 - actionid FK
 - userid FK
 - productquantity int
@@ -421,4 +420,15 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - posttime timestamp
 - lasupdate timestamp
 - useridFK
+- estado boolean
+
+
+## Devices
+- deviceid serial auto-increment PK
+- devicename varchar(50)
+- addressid FK
+- devicedescripcion varchar(150)
+- posttime timestamp
+- lastupdate timestamp
+- userid FK
 - estado boolean

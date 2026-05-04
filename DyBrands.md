@@ -227,6 +227,7 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 ## Impuestos
 - impuestoid serial auto-increment PK
 - impuestovalue decimal (10, 2)
+- impuestoname varchar(50)
 - impuestodescripcion varchar(200)
 - posttime timestamp
 - lastupdate timestamp
@@ -274,22 +275,8 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - cheksum byte
 
 
-## Empaque de orden
-- empaqueid serial auto-increment PK
-- ordenid serial auto-increment PK
-- requisitolegal FK
-- registrosanitario FK
-- paisorigenid FK
-- userid FK
-- deviceid FK
-- posttime timestamp
-- lastupdate timestamp
-- estado boolean
-
-
 ## Requisitos Legales
 - requisitolegal serial auto-increment PK
-- proveedorid FK
 - certificadodeorigenid FK
 - declaracionaduanera FK
 - codigoarancelarioid
@@ -303,6 +290,10 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 ## Certificados de origen
 - certificadodeorigenid serial auto-increment PK
 - paisid FK
+- codigoarancelarioid
+- quantity decimal(12, 2)
+- peso decimal(12, 2)
+- certificadoemisor varchar(60)
 - certificadodeorigenvigencia boolean
 - certificadodeorigenfecha timestamp
 - userid FK
@@ -330,10 +321,9 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 ## Codigos Arancelarios
 - codigoarancelarioid serial auto-increment PK
 - productoid FK
-- codigoarancelariocode varchar(20)
-- codigoarancelariodescripcion varchar(100)
 - codigoarancelariopercent decimal
 - impuestoporpaisid FK
+- codigoarancelariotypeid FK
 - paisid FK
 - codigoarancelariofecha timestamp
 - userid FK
@@ -343,11 +333,18 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - estado boolean
 
 
-## Registros sanitarios
-- registrosanitario serial auto-increment PK
+## Codigos arancelarios types
+- codigoarancelariotypeid serial auto-increment PK
+- codigoarancelariotypecode varchar(20)
+- codigoarancelariotypedescripcion varchar(100)
+
+
+## Registros sanitarios  --> Agregar informacion
+- registrosanitarioid serial auto-increment PK
 - productoid FK
 - paisid FK
 - registrosanitarioemisor varchar(40)
+- registrosanitariotype FK
 - registrosanitariodechaemision timestamp
 - registrosanitariodechaexpiracion timestamp
 - userid FK
@@ -355,6 +352,13 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - posttime timestamp
 - lastupdate timestamp
 - estado boolean
+- checksum bytea
+
+
+## Registros sanitarios types
+- registrosanitariotypeid serial auto-increment PK
+- registrossanitariotypecode varchar(40)
+- registrossanitariotypedescription varchar(200)
 
 
 ## OrderTrackings
@@ -365,6 +369,7 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - brandid FK
 - ordenid FK
 - orderTrackingfecha timestamp
+- orderTrackingdescription varchar(200)
 - userid FK
 - deviceid FK
 - posttime timestamp
@@ -459,7 +464,7 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - mediodepagoparametros jason
 
 
-## Devivces
+## Devices
 - deviceid serial auto-increment PK
 - devicename varchar(50)
 - addressid FK
@@ -469,4 +474,18 @@ Caso #2 - Etheria Global & Dynamic Brands Group
 - userid FK
 - estado boolean
 
+
+## Logs 
+- logid serial auto-increment pk
+- productid FK
+- actionid FK
+- userid FK
+- productquantity int
+- posttime timestamp
+- lastupdate timestamp
+
+
+## Actions
+- actionid serial auto-increment pk
+- actiontypename varchar(20)
 
