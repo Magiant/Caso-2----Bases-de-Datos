@@ -14,4 +14,4 @@
 ---
 # **Dynamic Brands: AI-Driven Digital Retail (MySQL)**
 ### Esta es una empresa de base tecnológica. Han desarrollado una IA capaz de generar sitios de e-commerce dinámicos. 
-# ___________________________________________________________________________
+
